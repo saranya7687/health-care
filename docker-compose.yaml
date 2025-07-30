@@ -2,27 +2,27 @@ version: '3.8'
 services:
   frontend:
     build:
-      context: ./frontend
+      context: D:/Healthcare/Github/FE/Mediapp/
     ports:
-      - "3000:3000"
+      - "3002:3000"
     depends_on:
       - backend
   backend:
     build:
-      context: ./backend
+      context: D:/Healthcare/Github/BE/Auth-service/Mediapp/
     ports:
-      - "8080:8080"
+      - "8083:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/health-care
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/health-care
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
       - mysql
   mysql:
-    image: mysql:8 
+    image: mysql:8
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: health-care    
     ports:
-      - "3306:3306"
+      - "3308:3306"
